@@ -39,6 +39,12 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+
+          envFrom:
+            - configMapRef:
+                name: skyloud-config
+            - secretRef:
+                name: skyloud-secret
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -51,3 +57,19 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skyloud-config
+data:
+  SERVEICE__NONSENSITIVE_DATA: come_from_configmap
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: skyloud-secret
+data:
+  SERVICE__SENSITIVE_DATA: Y29tZV9mcm9tX3NlY3JldA==
+
