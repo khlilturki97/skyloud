@@ -8,7 +8,7 @@ image:
   repository: khlilturki97/skyloud
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: latest
 
 imagePullSecrets: []
 nameOverride: ""
@@ -39,7 +39,7 @@ securityContext: {}
 service:
   type: NodePort
   port: 80
-  exposePort: 31234
+  exposePort: 30234
   targetPort: 3000
   internalPort: 80
 
