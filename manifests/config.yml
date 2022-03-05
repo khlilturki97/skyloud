@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: skyloud-config
+data:
+  SERVEICE__NONSENSITIVE_DATA: come_from_configmap
+
