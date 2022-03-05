@@ -1,4 +1,4 @@
-#Comment déployer un cluster K8s from scratch 
+# Comment déployer un cluster K8s from scratch 
 
 En supposant que le master et worker nodes sont déjà en place,
 1. Permettre aux noeuds de voir le trafic Bridge en exécutant 
