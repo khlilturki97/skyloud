@@ -42,9 +42,9 @@ spec:
 
           envFrom:
             - configMapRef:
-                name: skyloud-config
+                name: {{ include "skyloud.fullname" . }}-config
             - secretRef:
-                name: skyloud-secret
+                name: {{ include "skyloud.fullname" . }}-secret
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -61,7 +61,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: skyloud-config
+  name: {{ include "skyloud.fullname" . }}-config
 data:
   SERVEICE__NONSENSITIVE_DATA: come_from_configmap
 
@@ -69,7 +69,7 @@ data:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: skyloud-secret
+  name: {{ include "skyloud.fullname" . }}-secret
 data:
   SERVICE__SENSITIVE_DATA: Y29tZV9mcm9tX3NlY3JldA==
 
